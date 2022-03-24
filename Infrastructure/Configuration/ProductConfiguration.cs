@@ -13,23 +13,11 @@ namespace Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.HasData(
-                new Product()
-                {
-                    Id = 1,
-                    Name = "IT_Solutions Product ",
-                },
-                new Product()
-                {
-                    Id = 2,
-                    Name = "Admin_Solutions Product",
-                },
-                new Product()
-                {
-                    Id = 3,
-                    Name = "Football Product",
-                }
-                );
+            builder.Property(p => p.Name).IsRequired();
+            builder.Property(p => p.PictureUrl).IsRequired();
+            builder.Property("Price").HasColumnType("decimal(18,2)").IsRequired();
+            builder.HasOne(p => p.ProductBrand).WithMany().HasForeignKey(p => p.ProductBrandId);
+            builder.HasOne(p => p.ProductType).WithMany().HasForeignKey(p => p.ProductTypeId);
         }
 
     }
