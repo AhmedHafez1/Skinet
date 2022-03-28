@@ -1,7 +1,9 @@
 using API;
 using API.Helpers;
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +45,11 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseStatusCodePagesWithReExecute("/error/{0}");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -56,5 +63,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseStaticFiles();
+
+
 
 app.Run();
