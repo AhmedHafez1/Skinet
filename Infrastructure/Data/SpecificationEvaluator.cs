@@ -20,7 +20,17 @@ namespace Infrastructure.Data
                 query = query.Where(spec.Criteria);
             }
 
-           query = spec.Includes.Aggregate(query, (current, includeExpression) => current.Include(includeExpression));
+            if (spec.OrderBy != null)
+            {
+                query = query.OrderBy(spec.OrderBy);
+            }
+
+            if (spec.OrderByDesc != null)
+            {
+                query = query.OrderByDescending(spec.OrderByDesc);
+            }
+
+            query = spec.Includes.Aggregate(query, (current, includeExpression) => current.Include(includeExpression));
 
             return query;
         }
