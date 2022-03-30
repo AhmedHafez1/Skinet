@@ -1,0 +1,16 @@
+.cart-link {
+  position: relative;
+}
+
+.cart-no {
+  position: absolute;
+  right: 0.4rem;
+  top: -0.8rem;
+  min-height: 25px;
+  min-width: 25px;
+  padding: 0.1rem;
+  text-align: center;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+}
