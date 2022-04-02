@@ -8,3 +8,9 @@
 
 /* Importing Font Awesome SCSS file. */
 @import "node_modules/font-awesome/scss/font-awesome.scss";
+
+@import "styles/base";
+@import "styles/layout";
+@import "styles/components";
+@import "styles/mixins";
+@import "styles/typography";

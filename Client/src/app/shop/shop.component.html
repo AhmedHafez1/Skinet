@@ -1,0 +1,53 @@
+<div class="main-container">
+  <section class="sort">
+    <h5>Sort</h5>
+    <select class="form-select" aria-label="Default select example">
+      <option value="1">Alphabetical</option>
+      <option value="2">Price: Low to High</option>
+      <option value="3">Price: High to Low</option>
+    </select>
+  </section>
+  <section class="search">
+    <h5>Search</h5>
+    <div class="d-flex">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success">Search</button>
+    </div>
+  </section>
+  <section class="filters">
+    <h5>Brands</h5>
+    <div class="list-group mb-4">
+      <a
+        href="#"
+        class="list-group-item list-group-item-action"
+        *ngFor="let brand of brands"
+        (click)="onBrndFilter(brand.id)"
+        [ngClass]="{active: selectedBrand === brand.id}"
+        >{{ brand.name }}</a
+      >
+    </div>
+    <h5>Types</h5>
+    <div class="list-group mb-4">
+      <a
+        href="#"
+        class="list-group-item list-group-item-action"
+        *ngFor="let type of types"
+        (click)="onTypeFilter(type.id)"
+        [ngClass]="{active: selectedType === type.id}"
+        >{{ type.name }}</a
+      >
+    </div>
+  </section>
+  <main class="products">
+    <h6>Showing <strong>10</strong> of <strong>16</strong> Results</h6>
+    <app-product
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-product>
+  </main>
+</div>

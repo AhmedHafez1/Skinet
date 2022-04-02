@@ -1,0 +1,46 @@
+@import "../../styles/base";
+
+.sort {
+  .form-select {
+    font-size: 1.5rem;
+  }
+}
+
+.search {
+  .form-control,
+  .btn {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 2rem;
+  font-family: $font-display;
+}
+
+h6 {
+  font-size: 1.5rem;
+  font-family: $font-display;
+  margin-bottom: 0;
+}
+
+.filters {
+  font-size: 1.5rem;
+}
+
+.products {
+  justify-self: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-rows: min-content;
+  grid-row-gap: 1.2rem;
+  grid-column-gap: 1.9rem;
+
+  width: 100%;
+  h6 {
+    grid-column: 1 / -1;
+  }
+  &-little {
+    grid-template-columns: repeat(auto-fit, 27rem);
+  }
+}

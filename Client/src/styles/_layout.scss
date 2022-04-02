@@ -1,0 +1,11 @@
+.main-container {
+  padding: .5rem 18rem 1.5rem;
+  display: grid;
+  grid-template-columns:[side-start] 27rem [side-end main-start] 1fr [main-end];
+  grid-template-rows: repeat(2, min-content);
+  grid-gap: 1rem;
+
+  & > * {
+    padding: 1rem;
+  }
+}

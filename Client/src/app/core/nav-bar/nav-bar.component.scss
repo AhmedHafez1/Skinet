@@ -1,0 +1,30 @@
+@import "./../../../styles/base";
+header {
+  background-color: $color-grey-light-1;
+  box-shadow: 0 1px 6px rgba($color: #000000, $alpha: 0.3);
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-no {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: .6rem;
+  top: -1rem;
+  min-height: 22px;
+  min-width: 22px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.btn-login {
+  font-size: 1.5rem;
+
+
+}

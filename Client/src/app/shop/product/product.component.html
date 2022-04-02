@@ -1,0 +1,15 @@
+<div class="product">
+  <img class="product__img" [src]="product.pictureUrl" alt="" />
+  <div class="product__name">
+    {{ product.name }}
+  </div>
+  <div class="product__price">
+    {{ product.price | currency }}
+  </div>
+
+  <div class="product__buttons">
+    <button class="btn btn-outline-success fa fa-shopping-cart"></button>
+    &nbsp;&nbsp;
+    <button class="btn btn-outline-success">Edit</button>
+  </div>
+</div>
