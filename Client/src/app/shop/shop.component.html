@@ -1,10 +1,14 @@
 <div class="main-container">
   <section class="sort">
     <h5>Sort</h5>
-    <select class="form-select" aria-label="Default select example">
-      <option value="1">Alphabetical</option>
-      <option value="2">Price: Low to High</option>
-      <option value="3">Price: High to Low</option>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      (change)="onSort($event)"
+    >
+      <option *ngFor="let option of sortOPtions" [value]="option.value">
+        {{ option.name }}
+      </option>
     </select>
   </section>
   <section class="search">
@@ -27,7 +31,7 @@
         class="list-group-item list-group-item-action"
         *ngFor="let brand of brands"
         (click)="onBrndFilter(brand.id)"
-        [ngClass]="{active: selectedBrand === brand.id}"
+        [ngClass]="{ active: shopParams.brandId === brand.id }"
         >{{ brand.name }}</a
       >
     </div>
@@ -38,7 +42,7 @@
         class="list-group-item list-group-item-action"
         *ngFor="let type of types"
         (click)="onTypeFilter(type.id)"
-        [ngClass]="{active: selectedType === type.id}"
+        [ngClass]="{ active: shopParams.typeId === type.id }"
         >{{ type.name }}</a
       >
     </div>
@@ -49,5 +53,16 @@
       *ngFor="let product of products"
       [product]="product"
     ></app-product>
+    <div class="products__pagination">
+      <pagination
+        [boundaryLinks]="true"
+        [totalItems]="totalCount"
+        previousText="&lsaquo;"
+        nextText="&rsaquo;"
+        firstText="&laquo;"
+        lastText="&raquo;"
+      >
+      </pagination>
+    </div>
   </main>
 </div>

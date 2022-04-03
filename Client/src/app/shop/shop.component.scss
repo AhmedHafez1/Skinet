@@ -37,10 +37,19 @@ h6 {
   grid-column-gap: 1.9rem;
 
   width: 100%;
+
   h6 {
     grid-column: 1 / -1;
   }
+
   &-little {
     grid-template-columns: repeat(auto-fit, 27rem);
+  }
+
+  &__pagination {
+    grid-column: 1 / -1;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
   }
 }
