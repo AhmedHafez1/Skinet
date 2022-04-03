@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { IBrand } from '../shared/models/brand';
 import { IPagination } from '../shared/models/pagination';
 import { IProduct } from '../shared/models/product';
@@ -11,7 +19,9 @@ import { ShopService } from './shop.service';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, AfterViewChecked {
+  @ViewChild('search') search!: ElementRef;
+
   products: IProduct[] = [];
   brands: IBrand[] = [];
   types: IType[] = [];
@@ -28,12 +38,19 @@ export class ShopComponent implements OnInit {
     { name: 'Price: High to Low', value: 'priceDesc' },
   ];
 
-  constructor(private shopService: ShopService) {}
+  constructor(
+    private shopService: ShopService,
+    private changeDetector: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
     this.getTypes();
+  }
+
+  ngAfterViewChecked() {
+    this.changeDetector.detectChanges();
   }
 
   getProducts() {
@@ -61,16 +78,37 @@ export class ShopComponent implements OnInit {
 
   onBrndFilter(brandId: number) {
     this.shopParams.brandId = brandId;
+    this.shopParams.pageIndex = 1;
     this.getProducts();
   }
 
   onTypeFilter(typeId: number) {
     this.shopParams.typeId = typeId;
+    this.shopParams.pageIndex = 1;
     this.getProducts();
   }
 
   onSort(event: Event) {
     this.shopParams.sort = (event.target as HTMLSelectElement).value;
+    this.getProducts();
+  }
+
+  onPageChange(page: number) {
+    if (this.shopParams.pageIndex !== page) {
+      this.shopParams.pageIndex = page;
+      this.getProducts();
+    }
+  }
+
+  onSearch() {
+    this.shopParams.search = this.search.nativeElement.value;
+    this.shopParams.pageIndex = 1;
+    this.getProducts();
+  }
+
+  onReset() {
+    this.search.nativeElement.value = '';
+    this.shopParams = new ShopParams();
     this.getProducts();
   }
 }

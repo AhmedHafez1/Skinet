@@ -13,7 +13,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  right: .6rem;
+  right: 0.6rem;
   top: -1rem;
   min-height: 22px;
   min-width: 22px;
@@ -25,6 +25,17 @@ header {
 
 .btn-login {
   font-size: 1.5rem;
+}
 
+.logo {
+  cursor: pointer;
+}
 
+.nav-link {
+  color:#666666;
+  &.active {
+    color: $color-primary;
+    background-color: transparent;
+    border-radius: 5px;
+  }
 }

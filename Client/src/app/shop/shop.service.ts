@@ -14,12 +14,18 @@ export class ShopService {
   constructor(private http: HttpClient) {}
 
   getProducts(shopParams: ShopParams) {
-    let params = new HttpParams().append('pageSize', shopParams.pageSize);
+    let params = new HttpParams()
+      .append('pageSize', shopParams.pageSize)
+      .append('pageIndex', shopParams.pageIndex);
+
     shopParams.brandId &&
       (params = params.append('brandId', `${shopParams.brandId}`));
     shopParams.typeId &&
       (params = params.append('typeId', `${shopParams.typeId}`));
-    if (shopParams.sort) params = params.append('sort', shopParams.sort);
+
+    params = params.append('sort', shopParams.sort);
+
+    if (shopParams.search)  params = params.append('search', shopParams.search);
 
     return this.http.get<IPagination>(this.BASE_URL + 'products', { params });
   }

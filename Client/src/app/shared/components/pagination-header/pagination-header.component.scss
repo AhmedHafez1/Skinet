@@ -1,0 +1,10 @@
+@import "../../../../styles/base";
+:host {
+  grid-column: 1 / -1;
+}
+
+h6 {
+  font-size: 1.5rem;
+  font-family: $font-display;
+  margin-bottom: 0;
+}

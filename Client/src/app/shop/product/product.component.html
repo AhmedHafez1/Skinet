@@ -8,8 +8,13 @@
   </div>
 
   <div class="product__buttons">
-    <button class="btn btn-outline-success fa fa-shopping-cart"></button>
+    <button class="btn btn-outline-secondary fa fa-shopping-cart"></button>
     &nbsp;&nbsp;
-    <button class="btn btn-outline-success">Edit</button>
+    <button
+      class="btn btn-outline-secondary"
+      [routerLink]="['/shop', product.id]"
+    >
+      View
+    </button>
   </div>
 </div>

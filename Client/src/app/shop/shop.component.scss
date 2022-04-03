@@ -38,10 +38,6 @@ h6 {
 
   width: 100%;
 
-  h6 {
-    grid-column: 1 / -1;
-  }
-
   &-little {
     grid-template-columns: repeat(auto-fit, 27rem);
   }

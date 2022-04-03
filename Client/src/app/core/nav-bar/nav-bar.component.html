@@ -1,9 +1,30 @@
-<header class="d-flex flex-wrap align-items-center justify-content-between py-1 mb-3 border-bottom fixed-top">
-<img src="assets/images/logo.png" style="max-height: 70px;" alt="">
+<header
+  class="d-flex flex-wrap align-items-center justify-content-between py-1 mb-3 border-bottom fixed-top"
+>
+  <img
+    src="assets/images/logo.jpg"
+    style="max-height: 70px"
+    alt=""
+    [routerLink]="['/']"
+    class="logo"
+  />
 
-  <ul class="nav nav-pills text-uppercase" style="font-size: 2rem; font-weight: 500;">
-    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Shop</a></li>
+  <ul
+    class="nav nav-pills text-uppercase"
+    style="font-size: 2.1rem; font-weight: 600"
+  >
+    <li class="nav-item">
+      <a
+        [routerLink]="['/']"
+        class="nav-link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+    </li>
+    <li class="nav-item">
+      <a routerLink="/shop" class="nav-link" routerLinkActive="active">Shop</a>
+    </li>
     <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
   </ul>
 

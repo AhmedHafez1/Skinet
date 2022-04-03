@@ -1,0 +1,10 @@
+<h6 *ngIf="totalCount > 0">
+  Showing
+  <strong
+    >{{ (pageIndex - 1) * pageSize + 1 }} -
+    {{
+      pageIndex * pageSize > totalCount ? totalCount : pageIndex * pageSize
+    }}</strong
+  >
+  of <strong>{{ totalCount }}</strong> Results
+</h6>

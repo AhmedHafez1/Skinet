@@ -19,8 +19,15 @@
         type="search"
         placeholder="Search"
         aria-label="Search"
+        #search
+        (keyup.enter)="onSearch()"
       />
-      <button class="btn btn-outline-success">Search</button>
+      <button class="btn btn-outline-primary mx-2" (click)="onSearch()">
+        Search
+      </button>
+      <button class="btn btn-outline-secondary" (click)="onReset()">
+        Reset
+      </button>
     </div>
   </section>
   <section class="filters">
@@ -48,21 +55,22 @@
     </div>
   </section>
   <main class="products">
-    <h6>Showing <strong>10</strong> of <strong>16</strong> Results</h6>
+    <app-pagination-header
+      [pageIndex]="shopParams.pageIndex"
+      [pageSize]="shopParams.pageSize"
+      [totalCount]="totalCount"
+    ></app-pagination-header>
+    <h6 *ngIf="!totalCount">There are <strong>0</strong> results.</h6>
     <app-product
       *ngFor="let product of products"
       [product]="product"
     ></app-product>
-    <div class="products__pagination">
-      <pagination
-        [boundaryLinks]="true"
-        [totalItems]="totalCount"
-        previousText="&lsaquo;"
-        nextText="&rsaquo;"
-        firstText="&laquo;"
-        lastText="&raquo;"
-      >
-      </pagination>
+    <div class="products__pagination" *ngIf="totalCount > 0">
+      <app-pager
+        [pageSize]="shopParams.pageSize"
+        [totalCount]="totalCount"
+        (pageChange)="onPageChange($event)"
+      ></app-pager>
     </div>
   </main>
 </div>
