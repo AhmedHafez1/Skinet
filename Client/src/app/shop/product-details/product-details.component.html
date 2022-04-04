@@ -1,1 +1,30 @@
-<p>product-details works!</p>
+<div class="product-details">
+  <div class="product-details__img">
+    <img [src]="product?.pictureUrl" />
+  </div>
+  <div class="product-details__data">
+    <div class="product-details__title">
+      {{ product?.name }}
+    </div>
+    <div class="product-details__actions">
+      <svg class="product-details__icon c-pointer">
+        <use xlink:href="assets/icons/icons.svg#icon-remove_circle"></use>
+      </svg>
+      <span class="product-details__quantity">5</span>
+      <svg class="product-details__icon c-pointer">
+        <use xlink:href="assets/icons/icons.svg#icon-add_circle"></use>
+      </svg>
+      <div class="spacer"></div>
+      <button class="product-details__btn">
+        <svg class="product-details__btn-icon">
+          <use
+            xlink:href="assets/icons/icons.svg#icon-local_grocery_store"
+          ></use>
+        </svg>
+      </button>
+    </div>
+    <div class="product-details__description">
+      <h4>{{ product?.description }}</h4>
+    </div>
+  </div>
+</div>

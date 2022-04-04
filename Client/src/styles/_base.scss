@@ -2,13 +2,13 @@
 $color-primary:  #151e96;
 $color-primary-dark: #1e1f61;
 
-$color-secondary:#63c68c;
-$color-warn: #681168;
+$color-secondary:#2a9958;
+$color-warn: #771477;
 
 $color-grey-light-1: #f9fafb;
-$color-grey-light-2: #aaa;
+$color-grey-light-2: #ddd;
 
-$color-grey-dark: #375048;
+$color-grey-dark: #313250;
 
 // FONT VARIABLES
 $font-primary: "Nunito", sans-serif;
@@ -34,4 +34,12 @@ body {
 
 h5 {
   color: $color-primary;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1;
 }

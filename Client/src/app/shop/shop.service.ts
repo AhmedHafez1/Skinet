@@ -1,3 +1,4 @@
+import { IProduct } from 'src/app/shared/models/product';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBrand } from '../shared/models/brand';
@@ -25,9 +26,13 @@ export class ShopService {
 
     params = params.append('sort', shopParams.sort);
 
-    if (shopParams.search)  params = params.append('search', shopParams.search);
+    if (shopParams.search) params = params.append('search', shopParams.search);
 
     return this.http.get<IPagination>(this.BASE_URL + 'products', { params });
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.BASE_URL + 'products/' + id);
   }
 
   getBrands() {

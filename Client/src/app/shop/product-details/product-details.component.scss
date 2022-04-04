@@ -1,0 +1,95 @@
+@import "./../../../styles/base";
+@import "./../../../styles/mixins";
+
+.product-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+
+  &__img {
+    padding: 1.5rem;
+    img {
+      width: 100%;
+      background-color: $color-grey-light-1;
+    }
+  }
+
+  &__data {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__actions {
+  }
+
+  &__title {
+    background-color: $color-grey-light-1;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 3rem;
+    font-family: $font-display;
+    font-size: 2rem;
+    color: $color-primary-dark;
+    font-weight: 600;
+  }
+
+  &__actions {
+    background-color: $color-grey-light-1;
+    padding: 2rem;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+    fill: $color-secondary;
+  }
+
+  &__quantity {
+    margin: 0 10px;
+    height: 25px;
+    min-width: 25px;
+    background-color: $color-primary;
+    color: $color-grey-light-1;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    @include button-temp;
+    color: $color-secondary;
+    background-color: $color-grey-light-2;
+    height: 40px;
+    width: 40px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  }
+
+  &__description {
+    background-color: $color-grey-light-1;
+    padding: 2rem;
+    width: 100%;
+    flex: 1;
+    border-radius: 6px;
+    h4 {
+      color: $color-grey-dark;
+      font-size: 1.7rem;
+    }
+  }
+}

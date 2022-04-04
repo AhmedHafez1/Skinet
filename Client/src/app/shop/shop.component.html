@@ -34,8 +34,7 @@
     <h5>Brands</h5>
     <div class="list-group mb-4">
       <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        class="list-group-item list-group-item-action c-pointer"
         *ngFor="let brand of brands"
         (click)="onBrndFilter(brand.id)"
         [ngClass]="{ active: shopParams.brandId === brand.id }"
@@ -45,8 +44,7 @@
     <h5>Types</h5>
     <div class="list-group mb-4">
       <a
-        href="#"
-        class="list-group-item list-group-item-action"
+        class="list-group-item list-group-item-action c-pointer"
         *ngFor="let type of types"
         (click)="onTypeFilter(type.id)"
         [ngClass]="{ active: shopParams.typeId === type.id }"
