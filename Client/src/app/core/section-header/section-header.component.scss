@@ -1,0 +1,16 @@
+@import "../../../styles/base";
+.section-header {
+  background-color: rgb(238, 248, 255);
+
+  &__core {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.8rem 0.5rem;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-family: $font-display;
+  }
+}

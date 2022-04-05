@@ -1,18 +1,26 @@
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ToastrModule } from 'ngx-toastr';
+import { SectionHeaderComponent } from './section-header/section-header.component';
 
 
 
 @NgModule({
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
   ],
   exports: [
-    NavBarComponent
+    NavBarComponent,
+    SectionHeaderComponent
   ]
 })
 export class CoreModule { }
