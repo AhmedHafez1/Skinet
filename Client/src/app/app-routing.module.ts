@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent,  data: { breadcrumb: 'Home' } },
   {
     path: 'shop',
     loadChildren: () => import('./shop/shop.module').then((m) => m.ShopModule),
+    data: { breadcrumb: 'Shop' }
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

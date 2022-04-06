@@ -18,3 +18,16 @@
 .breadcrumb {
   font-size: 1.5rem;
 }
+
+.xng-breadcrumb-item {
+  font-size: 1.4rem;
+}
+
+.xng-breadcrumb-link {
+  color: royalblue !important;
+  transition: all .2s;
+  &:hover {
+    text-decoration: none !important;
+    color: $color-primary !important;
+  }
+}
