@@ -6,6 +6,10 @@
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
+/* bootswatch theme */ 
+@import "~bootswatch/dist/cerulean/variables";
+@import "~bootswatch/dist/cerulean/bootswatch";
+
 /* Importing Font Awesome SCSS file. */
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
@@ -21,13 +25,26 @@
 
 .xng-breadcrumb-item {
   font-size: 1.4rem;
+  color: $color-primary;
+}
+
+.xng-breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  color: $color-primary !important;
 }
 
 .xng-breadcrumb-link {
-  color: royalblue !important;
+  color: #555555 !important;
   transition: all .2s;
   &:hover {
     text-decoration: none !important;
-    color: $color-primary !important;
+    color: royalblue !important;
   }
+}
+
+.list-group-item.active {
+
+  background-color: $color-secondary;
+  border-color: $color-secondary;
 }

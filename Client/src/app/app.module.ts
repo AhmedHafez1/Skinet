@@ -1,3 +1,4 @@
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +19,11 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     CoreModule,
     HomeModule,
     SharedModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

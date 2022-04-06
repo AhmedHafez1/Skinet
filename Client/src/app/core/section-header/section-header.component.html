@@ -1,8 +1,18 @@
-<section class="section-header">
-  <div class="container section-header__core">
-    <h2 class="section-header__title">Title</h2>
-    <div class="section-header__breadcrumb">
-      <xng-breadcrumb></xng-breadcrumb>
+<ng-container *ngIf="$breadCrumb | async as breadCrumbs">
+  <section
+    class="section-header"
+    *ngIf="
+      breadCrumbs?.length > 0 &&
+      breadCrumbs[breadCrumbs.length - 1].label !== 'Home'
+    "
+  >
+    <div class="container section-header__core">
+      <h2 class="section-header__title">
+        {{ breadCrumbs[breadCrumbs.length - 1].label | titlecase }}
+      </h2>
+      <div class="section-header__breadcrumb">
+        <xng-breadcrumb></xng-breadcrumb>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</ng-container>

@@ -1,12 +1,15 @@
 @import "../../../styles/base";
 .section-header {
   background-color: rgb(238, 248, 255);
+  margin-bottom: 1.5rem;
+  height: 65px;
+  display: flex;
+  align-items: center;
 
   &__core {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1.8rem 0.5rem;
   }
 
   &__title {

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationHeaderComponent } from './components/pagination-header/pagination-header.component';
 import { PagerComponent } from './components/pager/pager.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationModule.forRoot(),
     HttpClientModule,
     RouterModule,
+    CarouselModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationHeaderComponent,
     PagerComponent,
     RouterModule,
+    CarouselModule
   ],
 })
 export class SharedModule {}

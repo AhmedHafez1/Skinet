@@ -1,4 +1,4 @@
-<div class="product-details">
+<div class="product-details container" *ngIf="!loading && product">
   <div class="product-details__img">
     <img [src]="product?.pictureUrl" />
   </div>
