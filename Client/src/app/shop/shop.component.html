@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container container">
   <section class="sort">
     <h5>Sort</h5>
     <select
@@ -22,7 +22,7 @@
         #search
         (keyup.enter)="onSearch()"
       />
-      <button class="btn btn-outline-primary mx-2" (click)="onSearch()">
+      <button class="btn btn-outline-success mx-2" (click)="onSearch()">
         Search
       </button>
       <button class="btn btn-outline-secondary" (click)="onReset()">
@@ -30,7 +30,7 @@
       </button>
     </div>
   </section>
-  <section class="filters">
+  <section class="filters" *ngIf="brands && types">
     <h5>Brands</h5>
     <div class="list-group mb-4">
       <a
@@ -52,7 +52,7 @@
       >
     </div>
   </section>
-  <main class="products">
+  <main class="products" *ngIf="!loading">
     <app-pagination-header
       [pageIndex]="shopParams.pageIndex"
       [pageSize]="shopParams.pageSize"

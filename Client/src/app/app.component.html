@@ -1,8 +1,16 @@
 <app-nav-bar></app-nav-bar>
 <div style="margin-top: 95px">
   <app-section-header></app-section-header>
-  <div class="container mt-2">
+  <div>
     <router-outlet></router-outlet>
   </div>
 </div>
 
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#fff"
+  type="square-loader"
+  [fullScreen]="true"
+  ><h2 style="color: white">Loading...</h2></ngx-spinner
+>

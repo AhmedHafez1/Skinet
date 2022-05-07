@@ -1,9 +1,9 @@
 // COLOR VARIABLES
-$color-primary:  #151e96;
-$color-primary-dark: #1e1f61;
+$color-primary:  #0d6efd;
+$color-primary-dark: #2143a0;
 
-$color-secondary:#2a9958;
-$color-warn: #771477;
+$color-secondary:#033c73;
+$color-warn: #c71c22;
 
 $color-grey-light-1: #f9fafb;
 $color-grey-light-2: #ddd;
@@ -33,7 +33,7 @@ body {
 }
 
 h5 {
-  color: $color-primary;
+  color: $color-warn;
 }
 
 .c-pointer {

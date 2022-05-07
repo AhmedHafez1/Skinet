@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import {
   AfterViewChecked,
   ChangeDetectorRef,
@@ -22,12 +23,14 @@ import { ShopService } from './shop.service';
 export class ShopComponent implements OnInit, AfterViewChecked {
   @ViewChild('search') search!: ElementRef;
 
-  products: IProduct[] = [];
-  brands: IBrand[] = [];
-  types: IType[] = [];
+  products: IProduct[] | undefined;
+  brands: IBrand[] | undefined;
+  types: IType[] | undefined;
 
   shopParams = new ShopParams();
   totalCount: number = 0;
+
+  loading = false;
 
   sortOPtions = [
     {
@@ -40,13 +43,17 @@ export class ShopComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private shopService: ShopService,
-    private changeDetector: ChangeDetectorRef
+    private changeDetector: ChangeDetectorRef,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
     this.getTypes();
+    this.spinnerService.spinnerObservable.subscribe(
+      (spin) => (this.loading = spin?.show)
+    );
   }
 
   ngAfterViewChecked() {
