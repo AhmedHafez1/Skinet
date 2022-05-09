@@ -8,12 +8,12 @@
   </div>
 
   <div class="product__buttons">
-    <button class="btn btn-outline-secondary fa fa-shopping-cart"></button>
-    &nbsp;&nbsp;
     <button
-      class="btn btn-outline-secondary"
-      [routerLink]="[product.id]"
-    >
+      (click)="addProductToBasket()"
+      class="btn btn-outline-secondary fa fa-shopping-cart"
+    ></button>
+    &nbsp;&nbsp;
+    <button class="btn btn-outline-secondary" [routerLink]="[product.id]">
       View
     </button>
   </div>
