@@ -1,7 +1,7 @@
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ShopService } from './../shop.service';
 import { IProduct } from 'src/app/shared/models/product';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
 

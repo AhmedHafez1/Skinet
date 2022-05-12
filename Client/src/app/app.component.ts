@@ -1,14 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { BasketService } from './basket/basket.service';
 import { Component, OnInit } from '@angular/core';
-import { IPagination } from './shared/models/pagination';
-import { IProduct } from './shared/models/product';
-import { ShopService } from './shop/shop.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  constructor(private basketService: BasketService) {}
+
+  ngOnInit(): void {
+    const basketId = localStorage.getItem('basket_id');
+    if (basketId) {
+      this.basketService.getBasket(basketId).subscribe();
+    }
+    
+  }
 }

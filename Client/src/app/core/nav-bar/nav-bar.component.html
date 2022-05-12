@@ -29,9 +29,11 @@
   </ul>
 
   <div class="d-flex align-items-center">
-    <a class="cart-link"  [routerLink]="['/basket']">
+    <a class="cart-link" [routerLink]="['/basket']">
       <i class="fa fa-shopping-cart fa-3x mx-4 text-dark"></i>
-      <span class="cart-no">11</span>
+      <span class="cart-no" *ngIf="basket$ | async as basket">{{
+        basket.items.length
+      }}</span>
     </a>
 
     <button class="btn btn-outline-secondary mx-2 btn-login">Login</button>

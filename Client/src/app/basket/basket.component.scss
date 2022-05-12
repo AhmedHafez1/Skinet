@@ -1,0 +1,68 @@
+@import "../../styles/base";
+
+td.align-middle {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  color: darkcyan !important;
+}
+
+th {
+  padding: .4rem 1.5rem;
+}
+
+thead {
+  background-color: $color-secondary;
+  color: #fff;
+  padding: .8rem 0;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    height: 60px;
+    margin-right: 0.5rem;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    text-decoration: none;
+    color: $color-secondary;
+    font-size: 16px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  &__type {
+    color: darkcyan;
+    font-size: 13px;
+    font-style: italic;
+  }
+}
+
+.t-header {
+  height: 4.5rem;
+  font-size: 15px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-item {
+  color: darkred;
+  font-size: 2.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+}

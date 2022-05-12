@@ -17,7 +17,7 @@ export class BasketService {
   constructor(private http: HttpClient) {}
 
   getBasket(id: string) {
-    this.http
+    return this.http
       .get<IBasket>(this.baseUrl + 'basket?id=' + id)
       .pipe(tap((basket) => this.basketSource.next(basket)));
   }
