@@ -1,9 +1,11 @@
 using API.Extensions;
 using API.Helpers;
 using API.Middleware;
+using Core.Entities.Identity;
 using Core.Interfaces;
 using Infrastructure.Data;
-
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
 
@@ -12,22 +14,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<StoreContext>(optionBuilder =>
 optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddSingleton<ConnectionMultiplexer>(c =>
+
+builder.Services.AddDbContext<AppIdentityDbContext>(optionBuilder =>
+optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
 {
     var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"), true);
-
     return ConnectionMultiplexer.Connect(configuration);
-});
-
-builder.Services.AddSingleton<IConnectionMultiplexer>(c => {
-    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"), true);
-    return  ConnectionMultiplexer.Connect(configuration);
 });
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddControllers();
 
 builder.Services.AddApplicationServices();
+builder.Services.AddIdentityServices();
 builder.Services.AddSwaggerDocumentation();
 
 builder.Services.AddCors(opt =>
@@ -44,10 +45,16 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
     var loggerFactory = scope.ServiceProvider.GetRequiredService<ILoggerFactory>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    var identityContext = scope.ServiceProvider.GetRequiredService<AppIdentityDbContext>();
+
     try
     {
         await context.Database.MigrateAsync();
         await SeedData.SeedAsync(context, loggerFactory);
+
+        await identityContext.Database.MigrateAsync();
+        await AppIdentityDbContextSeed.SeedUserAsync(userManager);
     }
     catch (Exception ex)
     {
