@@ -1,53 +1,67 @@
 <div class="container">
-  <div *ngIf="!(basket$ | async)">There are No Items in Your Basket</div>
-  <div *ngIf="basket$ | async as basket">
-    <div class="table-responsive-md">
-      <table class="table table-striped">
-        <thead class="t-header">
-          <tr>
-            <th class="align-middle" scope="col">Product</th>
-            <th class="align-middle" scope="col">Price</th>
-            <th class="align-middle text-center" scope="col">Quantity</th>
-            <th class="align-middle" scope="col">Total</th>
-            <th class="align-middle text-center" scope="col">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of basket.items">
-            <th scope="row" class="item-details">
-              <img [src]="item.pictureUrl" class="item-details__img" />
-              <span class="item-details__data">
-                <a class="item-details__name">{{ item.productName }}</a>
-                <span class="item-details__type"> Type: {{ item.type }}</span>
-              </span>
-            </th>
-            <td class="align-middle">{{ item.price | currency }}</td>
-            <td class="align-middle">
-              <div class="quantity">
-                <svg class="product-details__icon c-pointer">
-                  <use
-                    xlink:href="assets/icons/icons.svg#icon-remove_circle"
-                  ></use>
-                </svg>
-                <span class="product-details__quantity">{{
-                  item.quantity
-                }}</span>
-                <svg class="product-details__icon c-pointer">
-                  <use
-                    xlink:href="assets/icons/icons.svg#icon-add_circle"
-                  ></use>
-                </svg>
-              </div>
-            </td>
-            <td class="align-middle">
-              {{ item.price * item.quantity | currency }}
-            </td>
-            <td class="align-middle">
-              <a class="delete-item"><i class="fa fa-trash"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div *ngIf="!(basket$ | async)" style="font-size: 17px;">There are No Items in Your Basket</div>
+  <div *ngIf="basket$ | async as basket" class="basket">
+    <div class="basket__details">
+      <div class="table-responsive-md">
+        <table class="table table-striped">
+          <thead class="t-header">
+            <tr>
+              <th class="align-middle" scope="col">Product</th>
+              <th class="align-middle" scope="col">Price</th>
+              <th class="align-middle text-center" scope="col">Quantity</th>
+              <th class="align-middle" scope="col">Total</th>
+              <th class="align-middle text-center" scope="col">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of basket.items">
+              <th scope="row" class="item-details">
+                <img [src]="item.pictureUrl" class="item-details__img" />
+                <span class="item-details__data">
+                  <a class="item-details__name">{{ item.productName }}</a>
+                  <span class="item-details__type"> Type: {{ item.type }}</span>
+                </span>
+              </th>
+              <td class="align-middle">{{ item.price | currency }}</td>
+              <td class="align-middle">
+                <div class="quantity">
+                  <svg
+                    class="product-details__icon c-pointer"
+                    (click)="decrementItemQuantity(item)"
+                  >
+                    <use
+                      xlink:href="assets/icons/icons.svg#icon-remove_circle"
+                    ></use>
+                  </svg>
+                  <span class="product-details__quantity">{{
+                    item.quantity
+                  }}</span>
+                  <svg
+                    class="product-details__icon c-pointer"
+                    (click)="incrementItemQuantity(item)"
+                  >
+                    <use
+                      xlink:href="assets/icons/icons.svg#icon-add_circle"
+                    ></use>
+                  </svg>
+                </div>
+              </td>
+              <td class="align-middle">
+                {{ item.price * item.quantity | currency }}
+              </td>
+              <td class="align-middle">
+                <a class="delete-item" (click)="removeBasketItem(item)"
+                  ><i class="fa fa-trash"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="basket__summary">
+      <app-order-totals></app-order-totals>
     </div>
   </div>
 </div>

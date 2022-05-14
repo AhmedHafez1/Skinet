@@ -7,15 +7,21 @@
       {{ product?.name }}
     </div>
     <div class="product-details__actions">
-      <svg class="product-details__icon c-pointer">
+      <svg
+        class="product-details__icon c-pointer"
+        (click)="decrementQuantity()"
+      >
         <use xlink:href="assets/icons/icons.svg#icon-remove_circle"></use>
       </svg>
-      <span class="product-details__quantity">5</span>
-      <svg class="product-details__icon c-pointer">
+      <span class="product-details__quantity">{{ quantity }}</span>
+      <svg
+        class="product-details__icon c-pointer"
+        (click)="incrementQuantity()"
+      >
         <use xlink:href="assets/icons/icons.svg#icon-add_circle"></use>
       </svg>
       <div class="spacer"></div>
-      <button class="product-details__btn">
+      <button class="product-details__btn" (click)="addProductToBasket()">
         <svg class="product-details__btn-icon">
           <use
             xlink:href="assets/icons/icons.svg#icon-local_grocery_store"

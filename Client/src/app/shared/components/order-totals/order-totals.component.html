@@ -1,0 +1,32 @@
+<section class="summary">
+  <h2 class="summary__header">ORDER SUMMARY</h2>
+  <p class="summary__text">
+    Shipping Costs will be added depending on choices made during Checkout.
+  </p>
+  <ul class="summary__list" *ngIf="basketTotal$ | async as basketTotal">
+    <li class="summary__item">
+      <span class="summary__item-name">Order Price </span>
+      <span class="summary__item-value"
+        >{{ basketTotal.subtotal | currency }}
+      </span>
+    </li>
+    <li class="summary__item">
+      <span class="summary__item-name">Shipping Cost </span>
+      <span class="summary__item-value">
+        {{ basketTotal.shipping | currency }}
+      </span>
+    </li>
+    <li class="summary__item">
+      <span class="summary__item-name summary__item-name--total"
+        >Total Price
+      </span>
+      <span class="summary__item-value summary__item-value--total">
+        {{ basketTotal.total | currency }}
+      </span>
+    </li>
+    <button class="summary__btn" routerLink="/checkout">
+      Proceed to Checkout
+    </button>
+  </ul>
+
+</section>

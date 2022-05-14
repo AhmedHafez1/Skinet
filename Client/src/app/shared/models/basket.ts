@@ -19,3 +19,9 @@ export class Basket implements IBasket {
   id = uuidv4();
   items: IBasketItem[] = [];
 }
+
+export interface IBasketTotal {
+  shipping: number;
+  subtotal: number;
+  total: number;
+}

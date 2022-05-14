@@ -1,5 +1,18 @@
 @import "../../styles/base";
 
+.basket {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__details {
+    grid-column: span 2;
+  }
+
+  &__summary {
+    grid-column: 2 / 3;
+  }
+}
+
 td.align-middle {
   font-size: 14px;
   font-weight: 600;
@@ -8,13 +21,13 @@ td.align-middle {
 }
 
 th {
-  padding: .4rem 1.5rem;
+  padding: 0.4rem 1.5rem;
 }
 
 thead {
   background-color: $color-secondary;
   color: #fff;
-  padding: .8rem 0;
+  padding: 0.8rem 0;
 }
 
 .item-details {

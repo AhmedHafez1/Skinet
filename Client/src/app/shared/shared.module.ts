@@ -7,9 +7,10 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationHeaderComponent } from './components/pagination-header/pagination-header.component';
 import { PagerComponent } from './components/pager/pager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 
 @NgModule({
-  declarations: [PaginationHeaderComponent, PagerComponent],
+  declarations: [PaginationHeaderComponent, PagerComponent, OrderTotalsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationHeaderComponent,
     PagerComponent,
     RouterModule,
-    CarouselModule
+    CarouselModule,
+    OrderTotalsComponent
   ],
 })
 export class SharedModule {}
