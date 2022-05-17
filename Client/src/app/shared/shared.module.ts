@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationHeaderComponent } from './components/pagination-header/pagination-header.component';
@@ -28,7 +28,8 @@ import { OrderTotalsComponent } from './components/order-totals/order-totals.com
     PagerComponent,
     RouterModule,
     CarouselModule,
-    OrderTotalsComponent
+    OrderTotalsComponent,
+    ReactiveFormsModule
   ],
 })
 export class SharedModule {}
