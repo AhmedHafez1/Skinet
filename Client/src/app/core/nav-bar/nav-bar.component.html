@@ -36,7 +36,51 @@
       }}</span>
     </a>
 
-    <button class="btn btn-outline-secondary mx-2 btn-login" routerLink="/account/login">Login</button>
-    <button class="btn btn-outline-secondary mx-2 btn-login" routerLink="/account/register">Signup</button>
+    <ng-container *ngIf="(currentUser$ | async) === null">
+      <button
+        class="btn btn-outline-secondary mx-2 btn-login"
+        routerLink="/account/login"
+      >
+        Login
+      </button>
+      <button
+        class="btn btn-outline-secondary mx-2 btn-login"
+        routerLink="/account/register"
+      >
+        Signup
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="currentUser$ | async as user">
+      <div class="btn-group" dropdown>
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="btn btn-primary dropdown-toggle btn-logout"
+          aria-controls="dropdown-basic"
+        >
+          Welcome <strong>{{ user.displayName }}</strong>
+          <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem"><a class="dropdown-item">View Basket</a></li>
+
+          <li role="menuitem">
+            <a class="dropdown-item">View Orders</a>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="logOut()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
   </div>
 </header>

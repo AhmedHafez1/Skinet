@@ -8,16 +8,22 @@ import { PaginationHeaderComponent } from './components/pagination-header/pagina
 import { PagerComponent } from './components/pager/pager.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
-  declarations: [PaginationHeaderComponent, PagerComponent, OrderTotalsComponent],
+  declarations: [
+    PaginationHeaderComponent,
+    PagerComponent,
+    OrderTotalsComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
     PaginationModule.forRoot(),
     HttpClientModule,
     RouterModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   exports: [
     CommonModule,
@@ -29,7 +35,8 @@ import { OrderTotalsComponent } from './components/order-totals/order-totals.com
     RouterModule,
     CarouselModule,
     OrderTotalsComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDropdownModule
   ],
 })
 export class SharedModule {}

@@ -1,4 +1,4 @@
-<form class="form-signin">
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="form-signin">
   <div class="text-center mb-5">
     <h1
       class="h3 mb-3 font-weight-normal"
@@ -11,30 +11,41 @@
   <div class="form-label-group">
     <input
       type="email"
+      formControlName="email"
       id="inputEmail"
       class="form-control"
-      placeholder="Email address"
+      placeholder="Email"
       required=""
-      autofocus=""
     />
     <label for="inputEmail">Email address</label>
+    <span class="text-danger" *ngIf="isNotValid('email', 'required')"
+      >Email is required</span
+    >
+    <span class="text-danger" *ngIf="isNotValid('email', 'pattern')"
+      >Email is not valid</span
+    >
   </div>
 
   <div class="form-label-group">
     <input
       type="password"
+      formControlName="password"
       id="inputPassword"
       class="form-control"
       placeholder="Password"
       required=""
     />
     <label for="inputPassword">Password</label>
+    <span class="text-danger" *ngIf="isNotValid('password', 'required')"
+      >Password is required</span
+    >
   </div>
 
   <button
     class="btn btn-lg btn-primary btn-block"
     type="submit"
-    style="width: 100%"
+    style="width: 100%; padding: 10px 0; font-size: 14px"
+    [disabled]="loginForm.invalid"
   >
     Sign in
   </button>

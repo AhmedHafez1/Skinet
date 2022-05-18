@@ -32,10 +32,22 @@ header {
 }
 
 .nav-link {
-  color:#666666;
+  color: #666666;
   &.active {
     color: $color-primary;
     background-color: transparent;
     border-radius: 5px;
   }
+}
+
+.btn-logout {
+  padding: 0.5rem 1rem;
+  margin-right: 15px;
+  font-size: 13px;
+  color: #eee;
+}
+
+#dropdown-basic {
+  width: 92%;
+  cursor: pointer;
 }

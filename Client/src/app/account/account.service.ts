@@ -1,8 +1,8 @@
 import { IUser } from './../shared/models/user';
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, BehaviorSubject } from 'rxjs';
+import { map, BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -15,9 +15,23 @@ export class AccountService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  loadCurrentUser(token: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<IUser>(this.baseUrl + 'account', { headers }).pipe(
+      tap((user) => {
+        if (user) this.currentUserSource.next(user);
+      })
+    );
+  }
+
+  getCurrentUser() {
+    return this.currentUserSource.value;
+  }
+
   login(values: any) {
     return this.http.post<IUser>(this.baseUrl + 'account/login', values).pipe(
-      map((user) => {
+      tap((user) => {
         if (user) {
           localStorage.setItem('token', user.token);
           this.currentUserSource.next(user);
@@ -30,7 +44,7 @@ export class AccountService {
     return this.http
       .post<IUser>(this.baseUrl + 'account/register', values)
       .pipe(
-        map((user) => {
+        tap((user) => {
           if (user) {
             localStorage.setItem('token', user.token);
             this.currentUserSource.next(user);
