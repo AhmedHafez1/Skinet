@@ -16,6 +16,10 @@
       class="form-control"
       placeholder="Email"
       required=""
+      [ngClass]="{
+        'is-invalid': isInValidControl('email'),
+        'is-valid': isValidControl('email')
+      }"
     />
     <label for="inputEmail">Email address</label>
     <span class="text-danger" *ngIf="isNotValid('email', 'required')"
@@ -34,6 +38,10 @@
       class="form-control"
       placeholder="Password"
       required=""
+      [ngClass]="{
+        'is-invalid': isInValidControl('password'),
+        'is-valid': isValidControl('password')
+      }"
     />
     <label for="inputPassword">Password</label>
     <span class="text-danger" *ngIf="isNotValid('password', 'required')"
@@ -47,6 +55,6 @@
     style="width: 100%; padding: 10px 0; font-size: 14px"
     [disabled]="loginForm.invalid"
   >
-    Sign in
+    Log In
   </button>
 </form>

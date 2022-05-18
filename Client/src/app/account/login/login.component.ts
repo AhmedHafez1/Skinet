@@ -42,4 +42,17 @@ export class LoginComponent implements OnInit {
       errors?.[validation]
     );
   }
+
+  isValidControl(control: string) {
+    return (
+      this.loginForm.get(control)?.valid && this.loginForm.get(control)?.touched
+    );
+  }
+
+  isInValidControl(control: string) {
+    return (
+      this.loginForm.get(control)?.invalid &&
+      this.loginForm.get(control)?.touched
+    );
+  }
 }

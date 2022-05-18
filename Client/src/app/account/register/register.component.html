@@ -1,1 +1,82 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="form-signin">
+  <div class="text-center mb-5">
+    <h1
+      class="h3 mb-3 font-weight-normal"
+      style="font-size: 24px; font-weight: 600; color: darkblue"
+    >
+      Sign Up
+    </h1>
+  </div>
+
+  <div class="form-label-group">
+    <input
+      type="text"
+      formControlName="displayName"
+      id="inputName"
+      class="form-control"
+      placeholder="Name"
+      required=""
+      [ngClass]="{
+        'is-invalid': isInValidControl('displayName'),
+        'is-valid': isValidControl('displayName')
+      }"
+    />
+    <label for="inputName">Name</label>
+    <span class="text-danger" *ngIf="isNotValid('displayName', 'required')"
+      >Name is required</span
+    >
+  </div>
+
+  <div class="form-label-group">
+    <input
+      type="email"
+      formControlName="email"
+      id="inputEmail"
+      class="form-control"
+      placeholder="Email"
+      required=""
+      [ngClass]="{
+        'is-invalid': isInValidControl('email'),
+        'is-valid': isValidControl('email')
+      }"
+    />
+    <label for="inputEmail">Email address</label>
+    <span class="text-danger" *ngIf="isNotValid('email', 'required')"
+      >Email is required</span
+    >
+    <span class="text-danger" *ngIf="isNotValid('email', 'pattern')"
+      >Email is not valid</span
+    >
+  </div>
+
+  <div class="form-label-group">
+    <input
+      type="password"
+      formControlName="password"
+      id="inputPassword"
+      class="form-control"
+      placeholder="Password"
+      required=""
+      [ngClass]="{
+        'is-invalid': isInValidControl('password'),
+        'is-valid': isValidControl('password')
+      }"
+    />
+    <label for="inputPassword">Password</label>
+    <span class="text-danger" *ngIf="isNotValid('password', 'required')"
+      >Password is required</span
+    >
+  </div>
+
+  <ul class="text-danger list-unstyled">
+    <li *ngFor="let error of errors">{{ error }}</li>
+  </ul>
+  <button
+    class="btn btn-lg btn-primary btn-block"
+    type="submit"
+    style="width: 100%; padding: 10px 0; font-size: 14px"
+    [disabled]="registerForm.invalid"
+  >
+    Sign Up
+  </button>
+</form>
