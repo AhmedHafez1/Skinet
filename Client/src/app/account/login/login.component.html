@@ -22,10 +22,10 @@
       }"
     />
     <label for="inputEmail">Email address</label>
-    <span class="text-danger" *ngIf="isNotValid('email', 'required')"
+    <span class="invalid-feedback" *ngIf="isNotValid('email', 'required')"
       >Email is required</span
     >
-    <span class="text-danger" *ngIf="isNotValid('email', 'pattern')"
+    <span class="invalid-feedback" *ngIf="isNotValid('email', 'pattern')"
       >Email is not valid</span
     >
   </div>
@@ -44,7 +44,7 @@
       }"
     />
     <label for="inputPassword">Password</label>
-    <span class="text-danger" *ngIf="isNotValid('password', 'required')"
+    <span class="invalid-feedback" *ngIf="isNotValid('password', 'required')"
       >Password is required</span
     >
   </div>

@@ -22,7 +22,7 @@
       }"
     />
     <label for="inputName">Name</label>
-    <span class="text-danger" *ngIf="isNotValid('displayName', 'required')"
+    <span class="invalid-feedback" *ngIf="isNotValid('displayName', 'required')"
       >Name is required</span
     >
   </div>
@@ -40,12 +40,21 @@
         'is-valid': isValidControl('email')
       }"
     />
+    <div
+      *ngIf="registerForm.get('email')?.status === 'PENDING'"
+      class="fa fa-spinner fa-spin loader"
+    ></div>
     <label for="inputEmail">Email address</label>
-    <span class="text-danger" *ngIf="isNotValid('email', 'required')"
+    <span class="invalid-feedback" *ngIf="isNotValid('email', 'required')"
       >Email is required</span
     >
-    <span class="text-danger" *ngIf="isNotValid('email', 'pattern')"
+    <span class="invalid-feedback" *ngIf="isNotValid('email', 'pattern')"
       >Email is not valid</span
+    >
+    <span
+      class="invalid-feedback"
+      *ngIf="isNotValidAsync('email', 'emailExist')"
+      >Email is in Use</span
     >
   </div>
 
@@ -63,7 +72,7 @@
       }"
     />
     <label for="inputPassword">Password</label>
-    <span class="text-danger" *ngIf="isNotValid('password', 'required')"
+    <span class="invalid-feedback" *ngIf="isNotValid('password', 'required')"
       >Password is required</span
     >
   </div>

@@ -66,6 +66,15 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  isNotValidAsync(control: string, validation: string) {
+    const errors = this.registerForm.get(control)?.errors;
+
+    return (
+      this.registerForm.get(control)?.invalid &&
+      errors?.[validation]
+    );
+  }
+
   isValidControl(control: string) {
     return (
       this.registerForm.get(control)?.valid &&
@@ -88,7 +97,7 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  validateEmailNotTakenArrow(): AsyncValidatorFn {
+  validateEmailNotTakenArrowFn(): AsyncValidatorFn {
     return (control: AbstractControl) =>
       this.accountService.checkEmailExists(control.value).pipe(
         map((res) => {
