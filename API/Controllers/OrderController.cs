@@ -20,7 +20,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
+        public async Task<ActionResult<OrderToReturnDto>> CreateOrder(OrderDto orderDto)
         {
             var shipToAddress = _mapper.Map<Address>(orderDto.ShipToAddress);
 
@@ -30,7 +30,40 @@ namespace API.Controllers
 
             if (order == null) return BadRequest(new ApiResponse(400, "Error in creating the Order"));
 
-            return order;
+            return _mapper.Map<OrderToReturnDto>(order);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+
+            var orders = await _orderService.GetOrdersAsync(email);
+
+            var OrdersToReturn = _mapper.Map<IReadOnlyList<OrderToReturnDto>>(orders);
+
+            return Ok(OrdersToReturn);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OrderToReturnDto>> GetOrder(int id)
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var order = await _orderService.GetOrderByIdAsync(id, email);
+
+            if (order == null) return NotFound(new ApiResponse(400));
+
+            var orderToReturnDto = _mapper.Map<OrderToReturnDto>(order);
+
+            return orderToReturnDto;
+        }
+
+        [HttpGet("deliveryOptions")]
+        public async Task<ActionResult<IReadOnlyList<Delivery>>> GetDeliveryOptions()
+        {
+            var deliveries = await _orderService.GetDeliveryMethodsAsync();
+
+            return Ok(deliveries);
         }
     }
 }
