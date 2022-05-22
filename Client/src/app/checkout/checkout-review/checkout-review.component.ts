@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-checkout-review',
   templateUrl: './checkout-review.component.html',
-  styleUrls: ['./checkout-review.component.scss']
+  styleUrls: ['./checkout-review.component.scss'],
 })
 export class CheckoutReviewComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

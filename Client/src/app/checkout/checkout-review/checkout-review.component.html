@@ -1,1 +1,14 @@
-<p>checkout-review works!</p>
+<div class="checkoutForm">
+  <app-basket-summary [isBasket]="false"></app-basket-summary>
+  <div class="spacer"></div>
+  <div class="step-nav">
+    <button class="step-nav__btn" cdkStepperPrevious>
+      <i class="fa fa-angle-left step-nav__icon"></i>
+      <span style="margin-left: 1rem">Back To Delivery</span>
+    </button>
+    <button class="step-nav__btn" cdkStepperNext>
+      <span style="margin-right: 1rem">Next To Payment</span>
+      <i class="fa fa-angle-right step-nav__icon"></i>
+    </button>
+  </div>
+</div>

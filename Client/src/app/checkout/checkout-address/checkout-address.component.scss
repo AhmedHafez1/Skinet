@@ -1,8 +1,17 @@
+.checkoutForm {
+  min-height: 28vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.addressForm {
+  margin-top: 1rem;
+} 
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 
   .shipping-address {
     font-size: 17px;
@@ -20,9 +29,15 @@ header {
     border: none;
     border-radius: 2px;
     transition: all 0.3s;
+    display: flex;
+    align-items: center;
+
     &:hover {
       background-color: darkcyan;
       color: #fff;
+    }
+    &:active {
+      transform: translateY(3px);
     }
   }
 }

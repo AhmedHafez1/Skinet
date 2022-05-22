@@ -13,6 +13,7 @@
         class="custom-control-input"
         [value]="delivery.id"
         [id]="delivery.id"
+        (click)="updateDeliveryPrice(delivery)"
       />
       <label class="custom-control-label" [for]="delivery.id">
         <div class="d-flex align-items-center">
@@ -22,5 +23,16 @@
         <div class="delivery-price">{{ delivery.price | currency }}</div></label
       >
     </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="step-nav">
+    <button class="step-nav__btn" cdkStepperPrevious>
+      <i class="fa fa-angle-left step-nav__icon"></i>
+      <span style="margin-left: 1rem">Back To Address</span>
+    </button>
+    <button class="step-nav__btn" cdkStepperNext>
+      <span style="margin-right: 1rem">Next To Review</span>
+      <i class="fa fa-angle-right step-nav__icon"></i>
+    </button>
   </div>
 </div>

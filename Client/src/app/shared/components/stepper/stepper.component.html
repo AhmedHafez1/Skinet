@@ -4,11 +4,11 @@
       class="stepper__btn-step"
       (click)="selectStep(i)"
       [class.active]="selectedIndex === i"
+      [class.completed]="step.completed"
     >
       {{ step.label }}
     </button>
   </div>
-
 </div>
 <div class="step-content">
   <ng-container

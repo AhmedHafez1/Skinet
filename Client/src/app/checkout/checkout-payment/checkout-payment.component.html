@@ -1,1 +1,13 @@
-<p>checkout-payment works!</p>
+<div class="checkoutForm">
+  <p>checkout-payment works!</p>
+  <div class="spacer"></div>
+  <div class="step-nav">
+    <button class="step-nav__btn" cdkStepperPrevious>
+      <i class="fa fa-angle-left step-nav__icon"></i>
+      <span style="margin-left: 1rem">Back To Review</span>
+    </button>
+    <button class="step-nav__btn">
+      <span style="margin-right: 1rem" (click)="submitOrder()">Submit</span>
+    </button>
+  </div>
+</div>

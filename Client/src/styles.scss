@@ -236,6 +236,7 @@
 .form-label-group input {
   font-size: 14px;
 }
+
 /* Fallback for Edge
   -------------------------------------------------- */
 @supports (-ms-ime-align: auto) {
@@ -252,5 +253,40 @@
 
   .form-label-group input::-ms-input-placeholder {
     color: #777;
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////
+//////// Steps Next Previous Buttons
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  &__btn {
+    color: darkcyan;
+    background-color: #fff;
+    padding: 0.7rem 1.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: flex;
+    min-width: 139px;
+    justify-content: center;
+    &:hover {
+      background-color: darkcyan;
+      color: #fff;
+    }
+    &:active {
+      transform: translateY(3px);
+    }
+  }
+
+  &__icon {
+    font-size: 16px;
+    font-weight: 600;
   }
 }

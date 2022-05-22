@@ -1,3 +1,4 @@
+import { Idelivery } from './../shared/models/delivery';
 import { IProduct } from 'src/app/shared/models/product';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -22,13 +23,15 @@ export class BasketService {
   private basketTotalSource = new BehaviorSubject<IBasketTotal | null>(null);
   basketTotal$ = this.basketTotalSource.asObservable();
 
+  shippingPrice = 0;
+
   constructor(private http: HttpClient) {}
 
   getBasket(id: string) {
     return this.http.get<IBasket>(this.baseUrl + 'basket?id=' + id).pipe(
       tap((basket) => {
         this.basketSource.next(basket);
-        this.getBasketTotal();
+        this.calcBasketTotal();
       })
     );
   }
@@ -37,7 +40,7 @@ export class BasketService {
     this.http.post<IBasket>(this.baseUrl + 'basket', basket).subscribe({
       next: (basket) => {
         this.basketSource.next(basket);
-        this.getBasketTotal();
+        this.calcBasketTotal();
       },
       error: (e) => console.log(e),
     });
@@ -47,16 +50,25 @@ export class BasketService {
     return this.basketSource.value;
   }
 
-  getBasketTotal() {
+  setShippingPrice(delivery: Idelivery) {
+    this.shippingPrice = delivery.price;
+    this.calcBasketTotal();
+  }
+
+  private calcBasketTotal() {
     const basket = this.getCurrentBasket();
     const subtotal =
       basket?.items.reduce((a, b) => {
         return b.quantity * b.price + a;
       }, 0) ?? 0;
-    const shipping = 0;
-    const total = shipping + subtotal;
 
-    this.basketTotalSource.next({ subtotal, shipping, total });
+    const total = this.shippingPrice + subtotal;
+
+    this.basketTotalSource.next({
+      subtotal,
+      shipping: this.shippingPrice,
+      total,
+    });
   }
 
   addBasketItem(productItem: IProduct, quantity: number = 1) {
@@ -154,5 +166,11 @@ export class BasketService {
       },
       error: (error) => console.log(error),
     });
+  }
+
+  deleteBasketLocally() {
+    this.basketSource.next(null);
+    this.basketTotalSource.next(null);
+    localStorage.removeItem('basket_id');
   }
 }

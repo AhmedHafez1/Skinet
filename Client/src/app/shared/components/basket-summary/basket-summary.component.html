@@ -1,0 +1,54 @@
+<div class="table-responsive-md" *ngIf="basket$ | async as basket">
+  <table class="table table-striped">
+    <thead class="t-header">
+      <tr>
+        <th class="align-middle" scope="col">Product</th>
+        <th class="align-middle text-center" scope="col">Price</th>
+        <th class="align-middle text-center" scope="col">Quantity</th>
+        <th class="align-middle text-center" scope="col">Total</th>
+        <th *ngIf="isBasket" class="align-middle text-center" scope="col">
+          Remove
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basket.items">
+        <th scope="row" class="item-details">
+          <img [src]="item.pictureUrl" class="item-details__img" />
+          <span class="item-details__data">
+            <a class="item-details__name">{{ item.productName }}</a>
+            <span class="item-details__type"> Type: {{ item.type }}</span>
+          </span>
+        </th>
+        <td class="align-middle text-center">{{ item.price | currency }}</td>
+        <td class="align-middle">
+          <div class="quantity">
+            <svg
+              class="product-details__icon c-pointer"
+              (click)="decrementItemQuantity(item)"
+              *ngIf="isBasket"
+            >
+              <use xlink:href="assets/icons/icons.svg#icon-remove_circle"></use>
+            </svg>
+            <span class="product-details__quantity">{{ item.quantity }}</span>
+            <svg
+              class="product-details__icon c-pointer"
+              (click)="incrementItemQuantity(item)"
+              *ngIf="isBasket"
+            >
+              <use xlink:href="assets/icons/icons.svg#icon-add_circle"></use>
+            </svg>
+          </div>
+        </td>
+        <td class="align-middle text-center">
+          {{ item.price * item.quantity | currency }}
+        </td>
+        <td *ngIf="isBasket" class="align-middle">
+          <a class="delete-item" (click)="removeBasketItem(item)"
+            ><i class="fa fa-trash"></i
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
