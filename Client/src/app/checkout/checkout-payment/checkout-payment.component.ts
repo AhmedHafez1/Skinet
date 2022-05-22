@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CheckoutService } from '../checkout.service';
 import { BasketService } from 'src/app/basket/basket.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-payment',
@@ -16,7 +17,8 @@ export class CheckoutPaymentComponent implements OnInit {
   constructor(
     private checkoutService: CheckoutService,
     private basketService: BasketService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -28,6 +30,7 @@ export class CheckoutPaymentComponent implements OnInit {
         if (order) {
           this.toastrService.success('Order Submitted Successfully');
           this.basketService.deleteBasketLocally();
+          this.router.navigate(['checkout', 'success'], { state: order });
         }
       },
       error: () => this.toastrService.error('Failed to Submit the order'),
