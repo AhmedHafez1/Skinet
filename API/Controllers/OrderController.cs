@@ -3,6 +3,7 @@ using API.Errors;
 using AutoMapper;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -19,6 +20,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<OrderToReturnDto>> CreateOrder(OrderDto orderDto)
         {
@@ -33,6 +35,7 @@ namespace API.Controllers
             return _mapper.Map<OrderToReturnDto>(order);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
         {
@@ -45,6 +48,7 @@ namespace API.Controllers
             return Ok(OrdersToReturn);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderToReturnDto>> GetOrder(int id)
         {
@@ -58,6 +62,7 @@ namespace API.Controllers
             return orderToReturnDto;
         }
 
+        [Authorize]
         [HttpGet("deliveryOptions")]
         public async Task<ActionResult<IReadOnlyList<Delivery>>> GetDeliveryOptions()
         {

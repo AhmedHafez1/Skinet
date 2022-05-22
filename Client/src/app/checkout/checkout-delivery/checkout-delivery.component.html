@@ -1,0 +1,26 @@
+<div class="checkoutForm" [formGroup]="checkoutForm">
+  <header style="height: 34.8px">
+    <h4 class="shipping-address">Select the Delivery Method</h4>
+  </header>
+  <div class="deliveryForm" formGroupName="deliveryForm">
+    <div
+      class="custom-control custom-radio"
+      *ngFor="let delivery of deliveryOptions"
+    >
+      <input
+        type="radio"
+        formControlName="deliveryId"
+        class="custom-control-input"
+        [value]="delivery.id"
+        [id]="delivery.id"
+      />
+      <label class="custom-control-label" [for]="delivery.id">
+        <div class="d-flex align-items-center">
+          <span class="delivery-name">{{ delivery.shortName }}</span>
+          <span class="delivery-desc">{{ delivery.description }}</span>
+        </div>
+        <div class="delivery-price">{{ delivery.price | currency }}</div></label
+      >
+    </div>
+  </div>
+</div>

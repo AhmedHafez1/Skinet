@@ -9,12 +9,15 @@ import { PagerComponent } from './components/pager/pager.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 @NgModule({
   declarations: [
     PaginationHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
+    StepperComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     CarouselModule,
     OrderTotalsComponent,
     ReactiveFormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    CdkStepperModule,
+    StepperComponent
   ],
 })
 export class SharedModule {}

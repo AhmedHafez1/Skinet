@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .shipping-address {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: darkcyan;
+  }
+
+  .btn-address {
+    color: darkcyan;
+    background-color: #fff;
+    padding: 0.7rem 1.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 2px;
+    transition: all 0.3s;
+    &:hover {
+      background-color: darkcyan;
+      color: #fff;
+    }
+  }
+}

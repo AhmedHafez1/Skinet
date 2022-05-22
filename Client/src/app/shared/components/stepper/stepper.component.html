@@ -1,0 +1,17 @@
+<div class="stepper">
+  <div class="stepper__step" *ngFor="let step of steps; let i = index">
+    <button
+      class="stepper__btn-step"
+      (click)="selectStep(i)"
+      [class.active]="selectedIndex === i"
+    >
+      {{ step.label }}
+    </button>
+  </div>
+
+</div>
+<div class="step-content">
+  <ng-container
+    [ngTemplateOutlet]="selected ? selected.content : null"
+  ></ng-container>
+</div>

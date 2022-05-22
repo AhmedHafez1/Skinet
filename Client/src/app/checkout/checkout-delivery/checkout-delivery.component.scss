@@ -1,0 +1,40 @@
+.custom-radio {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 3px;
+}
+
+.custom-control-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+}
+
+.custom-control-input {
+  cursor: pointer;
+}
+
+.delivery-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: darkblue;
+  margin: 0 1rem;
+}
+
+.delivery-desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
+  font-style: italic;
+}
+
+.delivery-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: darkcyan;
+}

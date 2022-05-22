@@ -1,4 +1,23 @@
 <div class="container">
-  <h1>checkout works!</h1>
+  <div class="row">
+    <div class="col-lg-8 col-12">
+      <app-stepper [linearMode]="false">
+        <cdk-step label="Address"
+          ><app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address
+        ></cdk-step>
+        <cdk-step [label]="'Delivery'"
+          ><app-checkout-delivery [checkoutForm]="checkoutForm"></app-checkout-delivery
+        ></cdk-step>
+        <cdk-step [label]="'Review'"
+          ><app-checkout-review></app-checkout-review
+        ></cdk-step>
+        <cdk-step [label]="'Payment'"
+          ><app-checkout-payment></app-checkout-payment
+        ></cdk-step>
+      </app-stepper>
+    </div>
+    <div class="col-lg-4 col-12">
+      <app-order-totals></app-order-totals>
+    </div>
+  </div>
 </div>
-

@@ -1,0 +1,116 @@
+<div class="checkoutForm" [formGroup]="checkoutForm">
+  <header>
+    <h4 class="shipping-address">Sipping Address</h4>
+    <button class="btn-address">Save as Default Address</button>
+  </header>
+  <div class="addressForm" formGroupName="addressForm">
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="firstName"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('firstName'),
+          'is-valid': isValidControl('firstName')
+        }"
+      />
+      <label for="inputName">First Name</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('firstName', 'required')"
+        >First Name is required</span
+      >
+    </div>
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="lastName"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('lastName'),
+          'is-valid': isValidControl('lastName')
+        }"
+      />
+      <label for="inputName">Last Name</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('lastName', 'required')"
+        >Last Name is required</span
+      >
+    </div>
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="street"
+        id="street"
+        class="form-control"
+        placeholder="Street"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('street'),
+          'is-valid': isValidControl('street')
+        }"
+      />
+      <label for="inputName">Street</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('street', 'required')"
+        >Street is required</span
+      >
+    </div>
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="city"
+        id="city"
+        class="form-control"
+        placeholder="City"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('city'),
+          'is-valid': isValidControl('city')
+        }"
+      />
+      <label for="inputName">City</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('city', 'required')"
+        >City is required</span
+      >
+    </div>
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="state"
+        id="state"
+        class="form-control"
+        placeholder="State"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('state'),
+          'is-valid': isValidControl('state')
+        }"
+      />
+      <label for="inputName">State</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('state', 'required')"
+        >State is required</span
+      >
+    </div>
+    <div class="form-label-group">
+      <input
+        type="text"
+        formControlName="zipCode"
+        id="zipCode"
+        class="form-control"
+        placeholder="Zip Code"
+        required=""
+        [ngClass]="{
+          'is-invalid': isInValidControl('zipCode'),
+          'is-valid': isValidControl('zipCode')
+        }"
+      />
+      <label for="inputName">Zip Code</label>
+      <span class="invalid-feedback" *ngIf="isNotValid('zipCode', 'required')"
+        >Zip Code is required</span
+      >
+    </div>
+  </div>
+</div>
