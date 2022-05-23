@@ -21,7 +21,14 @@ export class CheckoutSuccessComponent implements OnInit {
 
     if (navigation && navigation.extras && navigation.extras.state) {
       this.order = navigation.extras.state as IOrder;
-      console.log(this.order);
+    }
+  }
+
+  navigateToOrder() {
+    if (this.order) {
+      this.router.navigate(['/orders', this.order.id]);
+    } else {
+      this.router.navigate(['/orders']);
     }
   }
 }

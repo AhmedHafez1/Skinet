@@ -1,20 +1,29 @@
-@import "../../../../styles/base";
+@import "../../../styles/base";
 
 td.align-middle {
   font-size: 14px;
   font-weight: 600;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
   color: darkcyan !important;
 }
 
 th {
-  padding: .4rem 1.5rem;
+  padding: 0.4rem 1.5rem;
+}
+
+th[scope="col"] {
+  padding: 1.8rem 1.5rem;
+  font-size: 13px;
 }
 
 thead {
   background-color: $color-secondary;
   color: #fff;
-  padding: 0.8rem 0;
+}
+
+table {
+  margin-top: 2rem;
 }
 
 .item-details {
@@ -55,14 +64,4 @@ thead {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.delete-item {
-  color: darkred;
-  font-size: 2.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  cursor: pointer;
 }

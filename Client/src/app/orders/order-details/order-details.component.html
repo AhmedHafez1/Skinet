@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row" *ngIf="order">
+    <div class="col-8">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle col-h">
+                <div class="text-uppercase">Product</div>
+              </th>
+              <th scope="col" class="align-middle col-h text-center">
+                <div class="text-uppercase">Price</div>
+              </th>
+              <th scope="col" class="align-middle col-h text-center">
+                <div class="text-uppercase">Quantity</div>
+              </th>
+              <th scope="col" class="align-middle col-h text-center">
+                <div class="text-uppercase">Total</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of order.orderItems">
+              <th scope="row">
+                <div class="p-2">
+                  <img
+                    src="{{ item.pictureUrl }}"
+                    alt="{{ item.productName }}"
+                    class="img-fluid"
+                    style="max-height: 50px"
+                  />
+                  <div class="ml-3 d-inline-block align-middle">
+                    <h5 class="mb-0">
+                      {{ item.productName }}
+                    </h5>
+                  </div>
+                </div>
+              </th>
+              <td class="align-middle text-center">
+                <strong>{{ item.price | currency }}</strong>
+              </td>
+              <td class="align-middle text-center">
+                <span class="font-weight-bold px-2">{{ item.quantity }}</span>
+              </td>
+              <td class="align-middle text-center">
+                <strong>{{ item.price * item.quantity | currency }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-4">
+      <app-order-totals
+        [order]="order"
+        [isBasket]="false"
+        [showCheckoutBtn]="false"
+      ></app-order-totals>
+    </div>
+  </div>
+</div>

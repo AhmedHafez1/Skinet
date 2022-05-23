@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="table-responsive-md" *ngIf="orders.length > 0">
+    <table class="table table-striped">
+      <thead class="t-header">
+        <tr>
+          <th class="align-middle text-center" scope="col">Order</th>
+          <th class="align-middle text-center" scope="col">Date</th>
+          <th class="align-middle text-center" scope="col">Total</th>
+          <th class="align-middle text-center" scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" [routerLink]="[order.id]">
+          <td class="align-middle text-center"># {{ order.id }}</td>
+          <td class="align-middle text-center">
+            {{ order.orderDate | date }}
+          </td>
+          <td class="align-middle text-center">
+            {{ order.total }}
+          </td>
+          <td class="align-middle text-center">
+            {{ order.orderStatus }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
