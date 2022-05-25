@@ -20,7 +20,8 @@ export class AccountService {
       this.currentUserSource.next(null);
       return of();
     }
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    let headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.get<IUser>(this.baseUrl + 'account', { headers }).pipe(
       tap((user) => {
