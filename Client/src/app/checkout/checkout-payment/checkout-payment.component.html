@@ -1,5 +1,39 @@
-<div class="checkoutForm">
-  <p>checkout-payment works!</p>
+<div class="checkoutForm" [formGroup]="checkoutForm">
+  <header style="height: 34.8px">
+    <h4 class="shipping-address">Add Your Card Details</h4>
+  </header>
+  <div class="row">
+    <div class="paymentForm" formGroupName="paymentForm">
+      <div class="form-label-group">
+        <input
+          type="text"
+          formControlName="nameOnCard"
+          id="nameOnCard"
+          class="form-control"
+          placeholder="Name On Card"
+          [ngClass]="{
+            'is-invalid': isInValidControl('nameOnCard'),
+            'is-valid': isValidControl('nameOnCard')
+          }"
+        />
+        <label for="inputName">Name On Card</label>
+        <span
+          class="invalid-feedback"
+          *ngIf="isNotValid('nameOnCard', 'required')"
+          >Name On Card</span
+        >
+      </div>
+      <div class="form-group col-12">
+        <div #cardNumber class="form-control mar-bot"></div>
+      </div>
+      <div class="form-group col-12">
+        <div #cardExpiry class="form-control mar-bot"></div>
+      </div>
+      <div class="form-group col-12">
+        <div #cardCvc class="form-control mar-bot"></div>
+      </div>
+    </div>
+  </div>
   <div class="spacer"></div>
   <div class="step-nav">
     <button class="step-nav__btn" cdkStepperPrevious>

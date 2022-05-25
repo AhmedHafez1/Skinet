@@ -47,4 +47,28 @@ export class CheckoutPaymentComponent implements OnInit {
       shipToAddress: this.checkoutForm.get('addressForm')?.value,
     };
   }
+
+  isNotValid(control: string, validation: string) {
+    const errors = this.checkoutForm?.get('paymentForm')?.get(control)?.errors;
+
+    return (
+      this.checkoutForm?.get('paymentForm')?.get(control)?.invalid &&
+      this.checkoutForm?.get('paymentForm')?.get(control)?.touched &&
+      errors?.[validation]
+    );
+  }
+
+  isValidControl(control: string) {
+    return (
+      this.checkoutForm?.get('paymentForm')?.get(control)?.valid &&
+      this.checkoutForm?.get('paymentForm')?.get(control)?.touched
+    );
+  }
+
+  isInValidControl(control: string) {
+    return (
+      this.checkoutForm?.get('paymentForm')?.get(control)?.invalid &&
+      this.checkoutForm?.get('paymentForm')?.get(control)?.touched
+    );
+  }
 }

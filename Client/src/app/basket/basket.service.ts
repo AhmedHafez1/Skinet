@@ -31,6 +31,7 @@ export class BasketService {
     return this.http.get<IBasket>(this.baseUrl + 'basket?id=' + id).pipe(
       tap((basket) => {
         this.basketSource.next(basket);
+        this.shippingPrice = basket.shippingPrice ?? 0;
         this.calcBasketTotal();
       })
     );
@@ -55,10 +56,20 @@ export class BasketService {
     const basket = this.getCurrentBasket();
     if (basket) {
       basket.deliveryMethodId = delivery.id;
+      basket.shippingPrice = delivery.price;
       this.setBasket(basket);
     }
 
     this.calcBasketTotal();
+  }
+
+  setPaymentIntent() {
+    return this.http
+      .post<IBasket>(
+        this.baseUrl + 'payment/' + this.getCurrentBasket()?.id,
+        {}
+      )
+      .pipe(tap((basket) => this.basketSource.next(basket)));
   }
 
   private calcBasketTotal() {
