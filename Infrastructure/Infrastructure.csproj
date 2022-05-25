@@ -15,6 +15,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
 		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.17.0" />
 		<PackageReference Include="StackExchange.Redis" Version="2.5.61" />
+		<PackageReference Include="Stripe.net" Version="39.114.0" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
 	</ItemGroup>
 
