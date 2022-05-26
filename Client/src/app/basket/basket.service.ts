@@ -31,7 +31,7 @@ export class BasketService {
     return this.http.get<IBasket>(this.baseUrl + 'basket?id=' + id).pipe(
       tap((basket) => {
         this.basketSource.next(basket);
-        this.shippingPrice = basket.shippingPrice ?? 0;
+        this.shippingPrice = basket?.shippingPrice ?? 0;
         this.calcBasketTotal();
       })
     );

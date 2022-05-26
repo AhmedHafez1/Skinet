@@ -43,8 +43,9 @@
       <i class="fa fa-angle-left step-nav__icon"></i>
       <span style="margin-left: 1rem">Back To Review</span>
     </button>
-    <button class="step-nav__btn">
-      <span style="margin-right: 1rem" (click)="submitOrder()">Submit</span>
+    <button [disabled]="loading" class="step-nav__btn" (click)="submitOrder()">
+      <span style="margin-right: 1rem">Submit</span>
+      <i class="fa fa-spinner fa-spin step-nav__icon"></i>
     </button>
   </div>
 </div>
