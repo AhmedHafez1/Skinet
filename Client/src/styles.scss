@@ -283,6 +283,9 @@
     &:active {
       transform: translateY(3px);
     }
+    &:disabled {
+      background-color: #dddddd;
+    }
   }
 
   &__icon {

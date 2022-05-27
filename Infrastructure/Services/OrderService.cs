@@ -68,7 +68,7 @@ namespace Infrastructure.Services
             if (result <= 0) return null;
 
             // Return Order
-            return existingOrder;
+            return order;
         }
 
         public async Task<IReadOnlyList<Delivery>> GetDeliveryMethodsAsync()

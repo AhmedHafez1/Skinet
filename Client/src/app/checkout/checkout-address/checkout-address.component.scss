@@ -6,7 +6,7 @@
 
 .addressForm {
   margin-top: 1rem;
-} 
+}
 
 header {
   display: flex;
@@ -38,6 +38,10 @@ header {
     }
     &:active {
       transform: translateY(3px);
+    }
+
+    &:disabled {
+      background-color: #eeeeee;
     }
   }
 }

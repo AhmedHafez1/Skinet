@@ -10,7 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StepperComponent extends CdkStepper implements OnInit {
   @Input() linearMode = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.linear = this.linearMode;
+  }
 
   selectStep(index: number) {
     this.selectedIndex = index;

@@ -1,10 +1,14 @@
 <div class="stepper">
-  <div class="stepper__step" *ngFor="let step of steps; let i = index">
+  <div
+    class="stepper__step"
+    *ngFor="let step of steps; let i = index"
+  >
     <button
       class="stepper__btn-step"
       (click)="selectStep(i)"
       [class.active]="selectedIndex === i"
       [class.completed]="step.completed"
+      disabled="true"
     >
       {{ step.label }}
     </button>
