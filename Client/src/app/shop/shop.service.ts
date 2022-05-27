@@ -5,11 +5,16 @@ import { IBrand } from '../shared/models/brand';
 import { IPagination as IPagination } from '../shared/models/pagination';
 import { IType } from '../shared/models/productType';
 import { ShopParams } from '../shared/models/shop-params';
+import { of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShopService {
+  private products: IProduct[] = [];
+  private brands: IBrand[] = [];
+  private types: IType[] = [];
+
   private readonly BASE_URL = 'https://localhost:7029/api/';
 
   constructor(private http: HttpClient) {}
@@ -28,18 +33,38 @@ export class ShopService {
 
     if (shopParams.search) params = params.append('search', shopParams.search);
 
-    return this.http.get<IPagination>(this.BASE_URL + 'products', { params });
+    return this.http
+      .get<IPagination>(this.BASE_URL + 'products', { params })
+      .pipe(
+        tap((response) => {
+          this.products = response.data;
+        })
+      );
   }
 
   getProduct(id: number) {
+    const product = this.products.find((p) => p.id === id);
+
+    if (product) return of(product);
+
     return this.http.get<IProduct>(this.BASE_URL + 'products/' + id);
   }
 
   getBrands() {
-    return this.http.get<IBrand[]>(this.BASE_URL + 'products/brands');
+    if (this.brands.length > 0) return of(this.brands);
+    return this.http.get<IBrand[]>(this.BASE_URL + 'products/brands').pipe(
+      tap((data) => {
+        this.brands = data;
+      })
+    );
   }
 
   getTypes() {
-    return this.http.get<IType[]>(this.BASE_URL + 'products/types');
+    if (this.types.length > 0) return of(this.types);
+    return this.http.get<IType[]>(this.BASE_URL + 'products/types').pipe(
+      tap((data) => {
+        this.types = data;
+      })
+    );
   }
 }
