@@ -30,6 +30,14 @@ namespace Infrastructure.Data
                 context.ProductTypes.AddRange(types);
             }
 
+            if (!context.Products.Any())
+            {
+                var productData = File.ReadAllText("../Infrastructure/Seed/products.json");
+                var products = JsonSerializer.Deserialize<List<Product>>(productData);
+
+                context.Products.AddRange(products);
+            }
+
             if (!context.Deliveries.Any())
             {
                 var deliveryData = File.ReadAllText("../Infrastructure/Seed/delivery.json");

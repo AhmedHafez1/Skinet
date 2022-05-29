@@ -42,6 +42,8 @@ builder.Services.AddCors(opt =>
 
 var app = builder.Build();
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
@@ -65,6 +67,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+
+
 
 // For Server Error Exceptions
 app.UseMiddleware<ExceptionMiddleware>();
