@@ -1,48 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="Content\images\products\boot-ang1.png" />
-    <Content Include="Content\images\products\boot-ang2.png" />
-    <Content Include="Content\images\products\boot-core1.png" />
-    <Content Include="Content\images\products\boot-core2.png" />
-    <Content Include="Content\images\products\boot-redis1.png" />
-    <Content Include="Content\images\products\glove-code1.png" />
-    <Content Include="Content\images\products\glove-code2.png" />
-    <Content Include="Content\images\products\glove-react1.png" />
-    <Content Include="Content\images\products\glove-react2.png" />
-    <Content Include="Content\images\products\hat-core1.png" />
-    <Content Include="Content\images\products\hat-react1.png" />
-    <Content Include="Content\images\products\hat-react2.png" />
-    <Content Include="Content\images\products\sb-ang1.png" />
-    <Content Include="Content\images\products\sb-ang2.png" />
-    <Content Include="Content\images\products\sb-core1.png" />
-    <Content Include="Content\images\products\sb-core2.png" />
-    <Content Include="Content\images\products\sb-react1.png" />
-    <Content Include="Content\images\products\sb-ts1.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Content\**" CopyToPublishDirectory="PreserveNewest"></Content>
+		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
 
 </Project>
