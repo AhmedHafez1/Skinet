@@ -7,16 +7,17 @@ using Infrastructure.Data;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<StoreContext>(optionBuilder =>
-optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddDbContext<AppIdentityDbContext>(optionBuilder =>
-optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
+optionBuilder.UseNpgsql(builder.Configuration.GetConnectionString("IdentityConnection")));
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>
 {
@@ -80,8 +81,14 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapFallbackToController("Index", "Fallback");
 
 app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Content")),
+    RequestPath = "/content"
+});
 
 app.UseSwaggerDocumentation();
 

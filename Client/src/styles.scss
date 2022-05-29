@@ -13,6 +13,9 @@
 /* Importing Font Awesome SCSS file. */
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
+@import "../node_modules/ngx-toastr/toastr.css";
+@import "../node_modules/ngx-spinner/animations/square-loader.css";
+
 @import "styles/base";
 @import "styles/layout";
 @import "styles/components";
